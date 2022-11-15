@@ -48,6 +48,7 @@ public:
     void add_book();    //增加图书
     void del_book();    //删除图书
     void change_book();    //更改图书信息
+    void reset_key();   //重置学生密码（说起来这个是全部还是单个）
 
 protected:
     long int account_num;
