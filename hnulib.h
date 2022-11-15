@@ -32,6 +32,7 @@ protected:
 class user{ //读者（用户）
 
 public:
+    void account_save();    //储存账号（感觉不是很对啊）
     void change_key();  //更改密码
     void show_borrow(); //查看借阅记录
     void b_r(); //借阅或归还图书

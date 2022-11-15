@@ -1,9 +1,21 @@
 #include<iostream>
+#include"hnulib.h"
+
 using namespace std;
 
-void IdenTity(int n)
+void IdenTity(int n)    //感觉没那么对，到时候用不了就删
 {
+    switch (n)
+    {
+    case 1:
+        //怎么调用都很奇怪
+        break;
+    case 2:
 
+        break;
+    default:
+        break;
+    }
 }
 
 int main(){
