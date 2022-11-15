@@ -8,7 +8,7 @@ void IdenTity(int n)    //感觉没那么对，到时候用不了就删
     switch (n)
     {
     case 1:
-        //怎么调用都很奇怪
+        //怎么调用都很奇怪，给用户操作部分再来一个函数吧
         break;
     case 2:
 
