@@ -5,7 +5,8 @@
 using namespace std;
 
 class books{    //图书信息
-
+friend user;
+friend admin;
 public:
     bool borrow;    //该图书是否被借阅
     void lookup_name(wstring name);  //书名查找图书
@@ -30,9 +31,8 @@ protected:
 };
 
 class user{ //读者（用户）
-
+friend admin;
 public:
-    void account_save();    //储存账号（感觉不是很对啊）
     void change_key();  //更改密码
     void show_borrow(); //查看借阅记录
     void b_r(); //借阅或归还图书
@@ -49,12 +49,18 @@ public:
     void add_book();    //增加图书
     void del_book();    //删除图书
     void change_book();    //更改图书信息
-    void reset_key();   //重置学生密码（说起来这个是全部还是单个）
 
 protected:
     long int account_num;
     long int key;
 
+};
+
+class menus{
+
+    void show_menu_main();  //主目录
+    void show_menu_admin(); //管理员目录
+    void show_menu_user();  //使用者目录
 };
 class tourist{  //游客（待开发）
 
