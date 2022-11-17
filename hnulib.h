@@ -60,7 +60,7 @@ public:
     void add_book();    //增加图书
     void del_book();    //删除图书
     void change_book();    //更改图书信息
-
+    void reset_key();   //重置学生密码
 protected:
     long int account_num;
     long int key;
@@ -69,6 +69,7 @@ protected:
 };
 
 class menu{
+    public:
     void show_menu_main();  //主目录
     void show_menu_admin(); //管理员目录
     void show_menu_user();  //使用者目录
@@ -80,5 +81,11 @@ class tourist{  //游客（待开发）
 
 struct books* loading_books(int &num);
 struct admin* loading_admin(int &num);
+
+class operate{  //用户操作
+    public:
+    void _admin_op();
+    void _user_op();
+};
 
 # endif

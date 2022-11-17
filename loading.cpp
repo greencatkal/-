@@ -24,7 +24,7 @@ struct books* loading_books(int &num){
         books *node=new books;
         head->next=node;
         while(ifs>>node->id&&ifs>>node->isbn&&ifs>>node->name&&ifs>>node->author&&ifs>>node->publishing&&ifs>>node->published&&ifs>>node->price&&ifs>>node->pages&&ifs>>node->description){
-            node->borrow=false;
+            node->borrow=false; //这是没写存数据部分是吗
             end->next=node;
             end=end->next;
             num++;
