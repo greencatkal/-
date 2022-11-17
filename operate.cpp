@@ -1,9 +1,9 @@
 #include<iostream>
 #include "hnulib.h"
 using namespace std;
-menu show;
-admin _ad;
-user _us;
+menu show;  //调用了菜单
+admin _ad;  //调用了管理员类
+user _us;   //调用了用户类
 
 void operate::_admin_op()
 {
@@ -25,6 +25,34 @@ void operate::_admin_op()
             break;
         case 4:
             _ad.reset_key();
+        case 0:
+            return ;
+        default:
+            cout<<"没有相应功能，请检查输入"<<'\n';
+            break;
+       }
+    }
+    
+}
+
+void operate::_user_op()//这么看，还缺了不少功能
+{
+    int num;
+    cin>>num;
+    while (true)
+    {
+        show.show_menu_user();
+        switch (num)
+        {
+        case 1:
+            _us.b_r();
+            break;
+        case 2:
+            _us.change_key();
+           break;
+        case 3:
+            _us.show_borrow();
+            break;
         case 0:
             return ;
         default:

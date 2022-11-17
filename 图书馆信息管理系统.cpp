@@ -12,7 +12,6 @@ void IdenTity(int &n)    //感觉没那么对，到时候用不了就删
     {
     case 1:
     _op._admin_op();
-        //怎么调用都很奇怪，给用户操作部分再来一个函数吧
         break;
     case 2:
     _op._user_op();
