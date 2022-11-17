@@ -1,5 +1,6 @@
 #include "hnulib.h"
 #include <fstream>
+#include <string>
 using namespace std;
 
 //此文件编写每次程序开始时进行对图书、管理员、用户的数据处理函数，返回值为链表头结点

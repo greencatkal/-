@@ -13,10 +13,10 @@ friend admin;
 friend menu;
 public:
     bool borrow;    //该图书是否被借阅
-    void lookup_name(wstring name);  //书名查找图书
-    void lookup_isbn(string isbn);  //isbn查找图书
-    void lookup_author(wstring author);  //作者查找图书
-    void lookup_publishing(wstring publishing);  //出版社查找图书
+    void lookup_name(string name,books *book_head);  //书名查找图书
+    void lookup_isbn(string isbn,books *book_head);  //isbn查找图书
+    void lookup_author(string author,books *book_head);  //作者查找图书
+    void lookup_publishing(string publishing,books *book_head);  //出版社查找图书
     void book_list();   //图书借阅次数排行榜
     void author_list(); //作者借阅次数排行榜
     void new_publish(); //最新出版排行榜
@@ -38,6 +38,7 @@ protected:
 
 class user{ //读者（用户）
 friend struct user* loading_users(int &num,books *head_books);
+friend void reg_user(user *user_head);
 friend admin;
 friend menu;
 public:
@@ -78,7 +79,7 @@ class tourist{  //游客（待开发）
 
 
 };
-class operate{  //用户操作
+class operate{  //用户操作(待删除)(什么啊笑死)
     public:
     void _admin_op();
     void _user_op();

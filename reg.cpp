@@ -54,3 +54,27 @@ void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目�
     cout<<"注册成功！"<<endl;
     system("cls");
 }
+
+void reg_user(user *user_head)
+{
+    ifstream ifs;
+    ofstream ofs;
+    system("cls");
+    int sign;
+    user *h=user_head;
+    while(h->next!=NULL){  
+        h=h->next;
+    }
+    ofs.open("user.txt",ios::out);
+    user *node=new user;
+    cout<<"欢迎注册！"<<endl<<"账号：";
+    cin>>node->account_num;
+    ofs<<node->account_num<<" ";
+    cout<<endl<<"密码：";
+    cin>>node->key;
+    ofs<<node->key<<" "<<endl;
+    node->next=NULL;
+    ofs.close();
+    cout<<"注册成功！"<<endl;
+    system("cls");
+}

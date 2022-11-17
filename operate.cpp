@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream>//一个先放着估计要删的函数部分（）
 #include "hnulib.h"
 using namespace std;
 menu show;  //调用了菜单
@@ -8,7 +8,7 @@ user _us;   //调用了用户类
 void operate::_admin_op()
 {
     int num;
-    cin>>num;
+    
     while (true)
     {
         show.show_menu_admin();
@@ -38,7 +38,7 @@ void operate::_admin_op()
 void operate::_user_op()//这么看，还缺了不少功能
 {
     int num;
-    cin>>num;
+    
     while (true)
     {
         show.show_menu_user();
@@ -49,7 +49,7 @@ void operate::_user_op()//这么看，还缺了不少功能
             break;
         case 2:
             _us.change_key();
-           break;
+            break;
         case 3:
             _us.show_borrow();
             break;

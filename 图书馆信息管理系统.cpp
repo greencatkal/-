@@ -11,27 +11,32 @@ void IdenTity(int &n)    //感觉没那么对，到时候用不了就删
     switch (n)
     {
     case 1:
-    _op._admin_op();
+        _op._admin_op();
         break;
     case 2:
-    _op._user_op();
+        _op._user_op();
         break;
     default:
+        cout<<"没有相应功能，请检查输入"<<'\n';
         break;
     }
 }
 
 int main()
 { 
-    show.show_menu_main();
+    while (true)
+    {
+        show.show_menu_main();
     
-    int Choice;
-    cin>>Choice;
+        int Choice;
+        cin>>Choice;
 
-    if(Choice==0)
-    return 0;
+        if(Choice==0)
+        return 0;
 
-    IdenTity(Choice);
+        IdenTity(Choice);
+    }
+    
 
     system("pause");
     return 0;
