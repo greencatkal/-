@@ -7,7 +7,7 @@ using namespace std;
 
 class books{    //图书信息
 friend struct books* loading_books(int &num);
-friend struct admin* loading_admin(int &num);
+friend struct user* loading_users(int &num,books *head_books);
 friend user;
 friend admin;
 friend menu;
@@ -37,8 +37,7 @@ protected:
 };
 
 class user{ //读者（用户）
-friend struct books* loading_books(int &num);
-friend struct admin* loading_admin(int &num);
+friend struct user* loading_users(int &num,books *head_books);
 friend admin;
 friend menu;
 public:
@@ -48,13 +47,13 @@ public:
 protected:
     long int account_num;   //账号
     long int key;   //密码
+    int log_num;    //借阅书的数目
     int log[20];    //借阅记录，最多借阅20本书
     user *next;
 
 };
 
 class admin{    //管理员
-friend struct books* loading_books(int &num);
 friend struct admin* loading_admin(int &num);
 public:
     void add_book();    //增加图书
@@ -78,14 +77,14 @@ class tourist{  //游客（待开发）
 
 
 };
-
-struct books* loading_books(int &num);
-struct admin* loading_admin(int &num);
-
 class operate{  //用户操作
     public:
     void _admin_op();
     void _user_op();
 };
+
+struct books* loading_books(int &num);
+struct admin* loading_admin(int &num);
+struct user* loading_users(int &num,books *head_books);
 
 # endif
