@@ -107,5 +107,8 @@ struct user* loading_users(int &num,books *head_books){ //用户需要录入借�
         ifs.close();
     }
     system("cls");
+    cout<<"程序加载完成！"<<' ';
+    system("pause");
+    system("cls");
     return head;
 }

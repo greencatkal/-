@@ -55,6 +55,7 @@ protected:
 
 class admin{    //管理员
 friend struct admin* loading_admin(int &num);
+friend void reg_admin(admin *admin_head);
 public:
     void add_book();    //增加图书
     void del_book();    //删除图书
@@ -86,5 +87,6 @@ class operate{  //用户操作
 struct books* loading_books(int &num);
 struct admin* loading_admin(int &num);
 struct user* loading_users(int &num,books *head_books);
+void reg_admin(admin *admin_head);
 
 # endif
