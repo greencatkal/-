@@ -42,9 +42,10 @@ friend void reg_user(user *user_head);
 friend admin;
 friend menu;
 public:
-    void change_key();  //更改密码
-    void show_borrow(); //查看借阅记录
-    void b_r(); //借阅或归还图书
+    user* login(user *user_head);   //登陆
+    void change_key(user *user_head);  //更改密码
+    void show_borrow(user *user_head); //查看借阅记录
+    void b_r(user *user_head); //借阅或归还图书
 protected:
     long int account_num;   //账号
     long int key;   //密码
@@ -58,6 +59,7 @@ class admin{    //管理员
 friend struct admin* loading_admin(int &num);
 friend void reg_admin(admin *admin_head);
 public:
+    bool login();   //登陆
     void add_book();    //增加图书
     void del_book();    //删除图书
     void change_book();    //更改图书信息
