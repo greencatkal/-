@@ -33,10 +33,11 @@ user* user::login(user *user_head) //登陆
 }
 //问题来了，是每进行一次操作登陆一次，还是一直保持登陆状态？
 //感觉实现前一个没那么麻烦(虽然用户用起来很麻烦)
+//等等，好像可以不用每次都登陆
 
 void user::change_key(user *user_head)  //改密码
 {
-    user *temp=user::login(user_head);
+    user *temp=user::login(user_head);  //先登着
     if(!temp)
     {
         return ;
@@ -70,4 +71,20 @@ void user::show_borrow(user *user_head)
 {
     user *temp=user::login(user_head);
     //好吧，这样让用户操作确实很麻烦(少女折寿中)
+    cout<<"你借过"<<temp->log_num<<"本书"<<'\n';
+    cout<<"分别是：";
+    cout<<temp->log<<'\n';  
+    return;
+}
+
+void user::b_r(int n,user *user_head)
+{
+    string _name;
+    user *temp=user::login(user_head);
+    if(n==1)
+    {
+        cout<<"你要借的书是？"<<'\n';
+        cin>>_name;
+        
+    }
 }
