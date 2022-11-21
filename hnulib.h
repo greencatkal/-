@@ -47,8 +47,8 @@ public:
     void show_borrow(user *user_head); //查看借阅记录
     void b_r(user *user_head); //借阅或归还图书
 protected:
-    long int account_num;   //账号
-    long int key;   //密码
+    string account_num;   //账号
+    string key;   //密码
     int log_num;    //借阅书的数目
     int log[20];    //借阅记录，最多借阅20本书
     user *next;
@@ -65,8 +65,8 @@ public:
     void change_book();    //更改图书信息
     void reset_key();   //重置学生密码
 protected:
-    long int account_num;
-    long int key;
+    string account_num;
+    string key;
     admin *next;
 
 };

@@ -4,15 +4,15 @@ using namespace std;
 
 user* user::login(user *user_head) //登陆
 {
-    long account;
+    string account;
     cin>>account;
     user *temp=user_head;
-    while(temp->account_num)
+    while(temp->next)
     {
         if(temp->account_num==account)  //匹配账号
         {
             cout<<"请输入密码"<<'\n';
-            long key;
+            string key;
             if(key==temp->key)  //"匹配密码"
             {
                 cout<<"登陆成功"<<'\n';
@@ -43,7 +43,7 @@ void user::change_key(user *user_head)  //改密码
     }
     else
     {
-        long new_key1,new_key2;
+        string new_key1,new_key2;
 
         in_again:
 

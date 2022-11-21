@@ -49,6 +49,7 @@ void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目�
     cout<<endl<<"密码：";
     cin>>node->key;
     ofs<<node->key<<" "<<endl;
+    h->next=node;
     node->next=NULL;
     ofs.close();
     cout<<"注册成功！"<<endl;
@@ -57,7 +58,6 @@ void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目�
 
 void reg_user(user *user_head)
 {
-    ifstream ifs;
     ofstream ofs;
     system("cls");
     int sign;
@@ -72,7 +72,9 @@ void reg_user(user *user_head)
     ofs<<node->account_num<<" ";
     cout<<endl<<"密码：";
     cin>>node->key;
-    ofs<<node->key<<" "<<endl;
+    //ofs<<node->key<<" "<<endl;  还要有借阅记录的写入
+    ofs<<node->key<<" "<<0<<endl;  
+    h->next=node;
     node->next=NULL;
     ofs.close();
     cout<<"注册成功！"<<endl;
