@@ -5,6 +5,13 @@
 #include <fstream>
 using namespace std;
 
+class books;
+class admin;
+class user;
+class menu;
+class operate;
+class tourist;
+
 class books{    //图书信息
 friend void save_books(books *books_head);
 friend struct books* loading_books(int &num);
@@ -14,8 +21,8 @@ friend admin;
 friend menu;
 public:
     bool borrow;    //该图书是否被借阅
-    void lookup_name(string name,books *book_head);  //书名查找图书
-    void lookup_isbn(string isbn,books *book_head);  //isbn查找图书
+    books* lookup_name(string name,books *book_head);  //书名查找图书
+    books* lookup_isbn(string isbn,books *book_head);  //isbn查找图书
     void lookup_author(string author,books *book_head);  //作者查找图书
     void lookup_publishing(string publishing,books *book_head);  //出版社查找图书
     void book_list();   //图书借阅次数排行榜
@@ -63,10 +70,10 @@ friend struct admin* loading_admin(int &num);
 friend void reg_admin(admin *admin_head);
 public:
     bool login();   //登陆
-    void add_book();    //增加图书
-    void del_book();    //删除图书
-    void change_book();    //更改图书信息
-    void reset_key();   //重置学生密码
+    void add_book(books *books_head);    //增加图书
+    void del_book(books *books_head);    //删除图书
+    void change_book(books *books_head);    //更改图书信息
+    void reset_key(user *users_head);   //重置学生密码
 protected:
     string account_num;
     string key;

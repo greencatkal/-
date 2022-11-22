@@ -2,7 +2,7 @@
 #include "hnulib.h"
 using namespace std;
 
-void books::lookup_name(string name,books *book_head)   //书名精确查找
+books* books::lookup_name(string name,books *book_head)   //书名精确查找
 {
     books *temp=book_head;
     while(temp->next)
@@ -16,7 +16,7 @@ void books::lookup_name(string name,books *book_head)   //书名精确查找
             else
             cout<<"本书可借阅"<<'\n';
 
-            return;
+            return temp;
         }
         else
         temp=temp->next;
@@ -25,7 +25,7 @@ void books::lookup_name(string name,books *book_head)   //书名精确查找
     return ;
 }
 
-void books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
+books* books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
 {
     books *temp=book_head;
     while(temp->next)
@@ -39,7 +39,7 @@ void books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
             else
             cout<<"本书可借阅"<<'\n';
 
-            return;
+            return temp;
         }
         else
         temp=temp->next;
