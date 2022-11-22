@@ -68,13 +68,25 @@ void user::change_key(user *user_head)  //改密码
     }
 }
 
-void user::show_borrow(user *user_head)
+void user::show_borrow(user *user_head,books *book_head)
 {
     user *temp=user::login(user_head);
     //好吧，这样让用户操作确实很麻烦(少女折寿中)
     cout<<"你借过"<<temp->log_num<<"本书"<<'\n';
     cout<<"分别是：";
-    cout<<temp->log<<'\n';  
+    for(int i=0;i<log_num;i++)
+    {
+        books *t=book_head;
+    while(t->next)
+    {
+        if(t->id==temp->log[i])
+        {
+            cout<<t->id<<" "<<t->isbn<<" "<<t->name<<" "<<t->author<<" "<<t->publishing<<" "<<t->published<<" "<<t->price<<" "<<t->price<<"\n"<<t->description<<'\n';
+        }
+        else
+        t=t->next;
+    }
+    } 
     return;
 }
 
