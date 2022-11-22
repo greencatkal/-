@@ -47,6 +47,8 @@ void admin::add_book(books *books_head){    //暂时设计成放到队尾
     }
     h->next=node;
     node->next=NULL;
+    cout<<"正在保存。。。"<<endl;
+    save_books(books_head);
     cout<<"保存成功！"<<endl;
     system("pause");
     return;
@@ -196,6 +198,11 @@ void admin::change_book(books *books_head){
                 break;
         }
     }
+    cout<<"保存修改中。。。"<<endl;
+    save_books(books_head);
+    cout<<"保存成功！"<<endl;
+    system("pause");
+    return;
 }
 
 void admin::del_book(books *books_head){
@@ -248,4 +255,9 @@ void admin::del_book(books *books_head){
             goto last_step;
         }
     }
+    cout<<"正在保存。。。"<<endl;
+    save_books(books_head);;
+    cout<<"保存成功！"<<endl;
+    system("pause");
+    return;
 }
