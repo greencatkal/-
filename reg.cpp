@@ -53,7 +53,7 @@ void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目�
     system("cls");
 }
 
-void reg_user(user *user_head)
+void reg_user(user *user_head)  //突然意识到还有账号重复问题要解决
 {
     system("cls");
     int sign;
@@ -61,9 +61,25 @@ void reg_user(user *user_head)
     while(h->next!=NULL){  
         h=h->next;
     }
-    user *node=new user;
+    user *node=new user,*tmp;
+    tmp=user_head;
+    string ac_;
+    re_ac:
     cout<<"欢迎注册！"<<endl<<"账号：";
-    cin>>node->account_num;
+    cin>>ac_;
+    while (tmp)
+    {
+        if(tmp->account_num!=ac_)
+        {
+            tmp=tmp->next;
+        }
+        else
+        {
+            cout<<"账号已被注册，请重新输入！"<<'\n';
+            goto re_ac;
+        }
+    }
+    node->account_num=ac_;
     cout<<endl<<"密码：";
     cin>>node->key;
     h->next=node;

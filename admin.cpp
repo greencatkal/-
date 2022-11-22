@@ -261,3 +261,23 @@ void admin::del_book(books *books_head){
     system("pause");
     return;
 }
+
+void admin::reset_key(user *users_head){
+    cout<<"请输入要重置的账号：";
+    string str;
+    while (users_head)
+    {
+        user* tmp=users_head;
+        if(tmp->account_num==str)
+        {
+            tmp->key=123456;
+            save_users(users_head);
+            return ;
+        }
+        else
+        tmp=tmp->next;
+    }
+
+    cout<<"没有相应账号的学生，请重新输入"<<'\n';
+    return;
+}

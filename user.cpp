@@ -57,6 +57,7 @@ void user::change_key(user *user_head)  //改密码
         {
             temp->key=new_key2;
             cout<<"修改成功！"<<'\n';
+            save_users(user_head);
             return ;
         }
         else
@@ -77,14 +78,42 @@ void user::show_borrow(user *user_head)
     return;
 }
 
-void user::b_r(int n,user *user_head)
+void user::b_r(int n,user *user_head,books *book)
 {
     string _name;
     user *temp=user::login(user_head);
-    if(n==1)
+    if(n==1)    //借书
     {
-        cout<<"你要借的书是？"<<'\n';
-        cin>>_name;
-        
+        if(book->borrow==false&&temp->log_num<=20)
+        {
+            book->borrow=true;
+            temp->log_num+=1;
+            cout<<"借阅成功！"<<'\n';
+            return;
+        }
+        else if(temp->log_num>20)
+        {
+            cout<<"借阅数量不得超过20本"<<'\n';
+            return;
+        }
+        else
+        {
+            cout<<"本书已被借阅"<<'\n';
+            return;
+        }
+    }
+    if(n==2)
+    {
+        if(book->borrow==true)
+        {
+            book->borrow=true;
+            cout<<"归还成功！"<<'\n';
+            return;
+        }
+        else
+        {
+            cout<<"本书已归还"<<'\n';
+            return;
+        }
     }
 }
