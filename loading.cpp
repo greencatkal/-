@@ -113,3 +113,5 @@ struct user* loading_users(int &num,books *head_books){ //用户需要录入借�
     system("cls");
     return head;
 }
+
+

@@ -5,7 +5,6 @@ using namespace std;
 
 void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目前仅支持一个密钥
     ifstream ifs;
-    ofstream ofs;
     system("cls");
     string key,key_temp;
     int sign;
@@ -41,42 +40,35 @@ void reg_admin(admin *admin_head){   //需要更改管理员链表数据，目�
     while(h->next!=NULL){   //找到链表尾部
         h=h->next;
     }
-    ofs.open("admin.txt",ios::out);
     admin *node=new admin;
     cout<<"欢迎注册！"<<endl<<"账号：";
     cin>>node->account_num;
-    ofs<<node->account_num<<" ";
     cout<<endl<<"密码：";
     cin>>node->key;
-    ofs<<node->key<<" "<<endl;
+    cout<<"请等待..."<<endl;
     h->next=node;
     node->next=NULL;
-    ofs.close();
+    save_admins(admin_head);
     cout<<"注册成功！"<<endl;
     system("cls");
 }
 
 void reg_user(user *user_head)
 {
-    ofstream ofs;
     system("cls");
     int sign;
     user *h=user_head;
     while(h->next!=NULL){  
         h=h->next;
     }
-    ofs.open("user.txt",ios::out);
     user *node=new user;
     cout<<"欢迎注册！"<<endl<<"账号：";
     cin>>node->account_num;
-    ofs<<node->account_num<<" ";
     cout<<endl<<"密码：";
     cin>>node->key;
-    //ofs<<node->key<<" "<<endl;  还要有借阅记录的写入
-    ofs<<node->key<<" "<<0<<endl;  
     h->next=node;
     node->next=NULL;
-    ofs.close();
+    save_users(user_head);
     cout<<"注册成功！"<<endl;
     system("cls");
 }

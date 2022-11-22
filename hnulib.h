@@ -6,6 +6,7 @@
 using namespace std;
 
 class books{    //图书信息
+friend void save_books(books *books_head);
 friend struct books* loading_books(int &num);
 friend struct user* loading_users(int &num,books *head_books);
 friend user;
@@ -22,7 +23,7 @@ public:
     void new_publish(); //最新出版排行榜
 
 protected:
-    long int num;   //图书数目
+    static long int num;   //图书数目
     int id; //图书id
     string isbn;    //图书isdn，较长
     string name;   //图书名，有中文
@@ -37,6 +38,7 @@ protected:
 };
 
 class user{ //读者（用户）
+friend void save_users(user *user_head); 
 friend struct user* loading_users(int &num,books *head_books);
 friend void reg_user(user *user_head);
 friend admin;
@@ -56,6 +58,7 @@ protected:
 };
 
 class admin{    //管理员
+friend void save_admins(admin *admin_head);
 friend struct admin* loading_admin(int &num);
 friend void reg_admin(admin *admin_head);
 public:
@@ -91,5 +94,8 @@ struct books* loading_books(int &num);
 struct admin* loading_admin(int &num);
 struct user* loading_users(int &num,books *head_books);
 void reg_admin(admin *admin_head);
-
+void reg_user(user *user_head);
+void save_books(books *books_head);  //保存更新（增、删、改等）信息到文件中
+void save_users(user *user_head);  //保存更新信息到文件中
+void save_admins(admin *admin_head); //保存更新信息到文件中
 # endif
