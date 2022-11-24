@@ -99,6 +99,7 @@ void user::b_r(int n,user *user_head,books *book)
         if(book->borrow==false&&temp->log_num<=20)
         {
             book->borrow=true;
+            book->b_num+=1;
             temp->log_num+=1;
             temp->log[log_num-1]=book->id;
             cout<<"借阅成功！"<<'\n';
