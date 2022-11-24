@@ -11,7 +11,7 @@ void save_books(books *books_head){
     while(h!=NULL){
         ofs<<h->id<<" "<<h->isbn<<" "<<h->name<<" "<<h->author<<" "
         <<h->publishing<<" "<<h->published<<" "<<h->price<<" "<<h->pages
-        <<" "<<h->description<<endl;
+        <<" "<<h->description<<" "<<h->b_num<<endl;
         h=h->next;
     }
     ofs.close();

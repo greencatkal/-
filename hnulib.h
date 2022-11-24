@@ -30,7 +30,6 @@ public:
     void new_publish(); //最新出版排行榜
 
 protected:
-    static long int num;   //图书数目
     int id; //图书id
     string isbn;    //图书isdn，较长
     string name;   //图书名，有中文
@@ -40,6 +39,7 @@ protected:
     double price;   //图书价格，含小数
     int pages;  //图书页数
     string description;    //图书描述
+    long int b_num;   //图书被借阅次数
     struct books *next;
 
 };

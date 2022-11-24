@@ -28,6 +28,8 @@ void admin::add_book(books *books_head){    //暂时设计成放到队尾
     cin>>h->pages;
     cout<<endl<<"请输入图书描述（回车停止输入）：";
     cin>>h->description;
+    cout<<endl<<"请输入已被借阅次数：";
+    cin>>h->b_num;
     last_step:
     system("cls");
     cout<<"确定保存？输入0以确认，输入1以重新输入，输入2以取消增加图书操作：";
@@ -48,6 +50,7 @@ void admin::add_book(books *books_head){    //暂时设计成放到队尾
     h->next=node;
     node->next=NULL;
     cout<<"正在保存。。。"<<endl;
+    h->borrow=false;
     save_books(books_head);
     cout<<"保存成功！"<<endl;
     system("pause");
@@ -87,9 +90,9 @@ void admin::change_book(books *books_head){
         string T;
         last_step:
         system("cls");
-        cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
+        cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->pages<<" "<<temp->b_num<<endl<<"\n"<<temp->description<<'\n';
         cout<<"请选择要修改的图书信息，输入1以更改isbn，输入2以更改书名，输入3以更改作者，输入4以更改出版社名称"<<endl
-            <<"输入5以更改出版时间，输入6以更改价格，输入7以更改页数，输入8以更改描述，输入'0'以退出：";
+            <<"输入5以更改出版时间，输入6以更改价格，输入7以更改页数，输入8以更改描述，输入9以更改被借阅次数，输入'0'以退出：";
         cin>>i;
         switch(i){
             case 0:
@@ -183,13 +186,26 @@ void admin::change_book(books *books_head){
             case 8:
                 cout<<"请输入描述：";
                 cin>>T;
-                cout<<"确定以“"<<T<<"”为本书的i描述吗？ 输入0以确认，输入其他数字以取消：";
+                cout<<"确定以“"<<T<<"”为本书的描述吗？ 输入0以确认，输入其他数字以取消：";
                 cin>>t;
                 if(t){
                     goto last_step;
                 }
                 else{
                     temp->description=T;
+                }
+                break;
+            case 9:
+                cout<<"请输入被借阅次数：";
+                int tt;
+                cin>>tt;
+                cout<<"确定以“"<<tt<<"”为本书的被借阅次数吗？ 输入0以确认，输入其他数字以取消：";
+                cin>>t;
+                if(t){
+                    goto last_step;
+                }
+                else{
+                    temp->b_num=tt;
                 }
                 break;
             default:
