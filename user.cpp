@@ -24,6 +24,10 @@ user* user::login(user *user_head) //登陆
                 return NULL;
             }
         }
+        else
+        {
+            temp=temp->next;
+        }
 
     }
 
@@ -90,7 +94,7 @@ void user::show_borrow(user *user_head,books *book_head)
     return;
 }
 
-void user::b_r(int n,user *user_head,books *book)
+void user::b_r(int n,user *user_head,books *book)   //这个部分的编写跟目录结构有点关系，等目录出来大概是要改
 {
     string _name;
     user *temp=user::login(user_head);
@@ -130,4 +134,7 @@ void user::b_r(int n,user *user_head,books *book)
             return;
         }
     }
+    else
+    cout<<"输入错误，请重新输入"<<'\n';
+    return;
 }
