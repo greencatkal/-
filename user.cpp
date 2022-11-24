@@ -100,6 +100,7 @@ void user::b_r(int n,user *user_head,books *book)
         {
             book->borrow=true;
             temp->log_num+=1;
+            temp->log[log_num-1]=book->id;
             cout<<"借阅成功！"<<'\n';
             return;
         }

@@ -9,7 +9,7 @@ books* books::lookup_name(string name,books *book_head)   //书名精确查找
     {
         if(temp->name==name)
         {
-            cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
+            cout<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
             cout<<"借阅情况： ";
             if(temp->borrow)
             cout<<"本书已被借阅"<<'\n';
@@ -22,7 +22,7 @@ books* books::lookup_name(string name,books *book_head)   //书名精确查找
         temp=temp->next;
     }
     cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
-    return ;
+    return NULL;
 }
 
 books* books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
@@ -32,7 +32,7 @@ books* books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
     {
         if(temp->isbn==isbn)
         {
-            cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
+            cout<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
             cout<<"借阅情况： ";
             if(temp->borrow)
             cout<<"本书已被借阅"<<'\n';
@@ -45,7 +45,7 @@ books* books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
         temp=temp->next;
     }
     cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
-    return ;
+    return NULL;
 }
 //接下来应该是两个模糊查找
 void books::lookup_author(string author,books *book_head)
@@ -57,7 +57,7 @@ void books::lookup_author(string author,books *book_head)
         if(temp->author==author)
         {
             finding=true;
-            cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
+            cout<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
             cout<<"借阅情况： ";
             if(temp->borrow)
             cout<<"本书已被借阅"<<'\n';
@@ -69,7 +69,7 @@ void books::lookup_author(string author,books *book_head)
     }
     if(!finding)
     cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
-    return;
+    return ;
 }
 
 void books::lookup_publishing(string publishing,books *book_head)
@@ -81,7 +81,7 @@ void books::lookup_publishing(string publishing,books *book_head)
         if(temp->publishing==publishing)
         {
             finding=true;
-            cout<<temp->id<<" "<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
+            cout<<temp->isbn<<" "<<temp->name<<" "<<temp->author<<" "<<temp->publishing<<" "<<temp->published<<" "<<temp->price<<" "<<temp->price<<"\n"<<temp->description<<'\n';
             cout<<"借阅情况： ";
             if(temp->borrow)
             cout<<"本书已被借阅"<<'\n';
