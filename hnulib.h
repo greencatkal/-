@@ -25,9 +25,9 @@ public:
     books* lookup_isbn(string isbn,books *book_head);  //isbn查找图书
     void lookup_author(string author,books *book_head);  //作者查找图书
     void lookup_publishing(string publishing,books *book_head);  //出版社查找图书
-    books* book_list(books *book_head);   //图书借阅次数排行榜
+    void book_list(books *book_head);   //图书借阅次数排行榜
     books* author_list(books *book_head); //作者借阅次数排行榜
-    books* new_publish(books *book_head); //最新出版排行榜
+    void new_publish(books *book_head); //最新出版排行榜
     books* dictionary_list(books *book_head); //字典序排序
 
 protected:

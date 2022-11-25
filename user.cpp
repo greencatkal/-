@@ -85,7 +85,7 @@ void user::show_borrow(user *user_head,books *book_head)
     {
         if(t->id==temp->log[i])
         {
-            cout<<t->id<<" "<<t->isbn<<" "<<t->name<<" "<<t->author<<" "<<t->publishing<<" "<<t->published<<" "<<t->price<<" "<<t->price<<"\n"<<t->description<<'\n';
+            cout<<t->isbn<<" "<<t->name<<" "<<t->author<<" "<<t->publishing<<" "<<t->published<<" "<<t->price<<" "<<t->price<<"\n"<<t->description<<'\n';
         }
         else
         t=t->next;

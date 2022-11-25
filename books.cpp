@@ -23,7 +23,7 @@ books* books::lookup_name(string name,books *book_head)   //书名精确查找
         else
         temp=temp->next;
     }
-    cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
+    cout<<"未查找到相关书籍，请检查输入是否正确"<<'\n';
     return NULL;
 }
 
@@ -46,7 +46,7 @@ books* books::lookup_isbn(string isbn,books *book_head)   //ISBN精确查找
         else
         temp=temp->next;
     }
-    cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
+    cout<<"未查找到相关书籍，请检查输入是否正确"<<'\n';
     return NULL;
 }
 //接下来应该是两个模糊查找
@@ -103,6 +103,7 @@ books* books::dictionary_list(books* books_head){
     books *tmp_end=tmp_head;
     books *node=new books;
     books *tmp=books_head->next;
+    int count=0;
     while(tmp!=NULL){
         node->id=tmp->id;
         node->isbn=tmp->isbn;
@@ -120,16 +121,14 @@ books* books::dictionary_list(books* books_head){
         tmp_end->next=node;
         tmp_end=tmp_end->next;
         books *node=new books;
+        count++;
     }
     delete node;
+    count-=1;
     tmp_end->next=NULL;
-    int i,count=0,num;
+    int i,num;
     books *p,*q,*last;
     p=tmp_head->next;
-    while(p->next!=NULL){
-        count++;
-        p=p->next;
-    }
     for(i=0;i<count-1;i++){
         p=tmp_head->next;
         q=p->next;
@@ -147,4 +146,82 @@ books* books::dictionary_list(books* books_head){
     }
     return tmp_head;
 
+}
+
+void books::book_list(books *book_head) //图书借阅排行，我把返回值改成空了
+{
+    cout<<"加载中。。。"<<'\n';
+    books* tmp=dictionary_list(book_head);  //先按字典序排
+    int i,count=0,num;
+    books *p,*q,*last;
+    p=tmp->next;
+
+    while (p->next!=NULL)
+    {
+        count++;
+        p=p->next;
+    }
+    
+    for(i=0;i<count-1;i++){
+        p=tmp->next;
+        q=p->next;
+        last=tmp;
+        for(num=0;num<count-i-1;num++){
+            if(p->b_num>p->next->b_num){    //按借阅次数大小排序
+                last->next=q;
+                p->next=q->next;
+                q->next=p;
+            }
+            last=last->next;
+            p=last->next;
+            q=p->next;
+        }
+    }
+    cout<<"图书借阅次数排行榜（前20）："<<'\n';
+    p=tmp->next;
+    for(int i=0;i<20;i++)   
+    {
+        cout<<i+1<<" "<<p->isbn<<" "<<p->name<<" "<<p->author<<" "<<p->publishing<<" "<<p->published<<" "<<p->price<<" "<<p->price<<"\n"<<p->description<<'\n';
+        p=p->next;
+    }
+    return ;    //函数结束应该会自动释放内存的……吧？
+}
+
+void books::new_publish(books *book_head) //图书最新出版排行
+{
+    cout<<"加载中。。。"<<'\n';
+    books* tmp=dictionary_list(book_head);  //先按字典序排
+    int i,count=0,num;
+    books *p,*q,*last;
+    p=tmp->next;
+
+    while (p->next!=NULL)
+    {
+        count++;
+        p=p->next;
+    }
+    
+    for(i=0;i<count-1;i++){
+        p=tmp->next;
+        q=p->next;
+        last=tmp;
+        for(num=0;num<count-i-1;num++){
+            if(p->published.compare(q->published)==1){    //按出版时间排序
+                last->next=q;
+                p->next=q->next;
+                q->next=p;
+            }
+            last=last->next;
+            p=last->next;
+            q=p->next;
+        }
+    }
+    cout<<"图书最新出版排行榜（前20）："<<'\n';
+    p=tmp->next;
+    for(int i=0;i<20;i++)   
+    {
+        cout<<i+1<<" "<<p->isbn<<" "<<p->name<<" "<<p->author<<" "<<p->publishing<<" "<<p->published<<" "<<p->price<<" "<<p->price<<"\n"<<p->description<<'\n';
+        p=p->next;
+    }
+    return ; 
 }
