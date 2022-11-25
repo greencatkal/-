@@ -1,3 +1,5 @@
+//本文件实现对图书的查找、排序
+
 #include<iostream>
 #include "hnulib.h"
 using namespace std;
@@ -94,4 +96,55 @@ void books::lookup_publishing(string publishing,books *book_head)
     if(!finding)
     cout<<"未查找到相关书籍，请检查输入是否正确或向管理员反应书籍缺失"<<'\n';
     return;
+}
+
+books* books::dictionary_list(books* books_head){
+    books *tmp_head=new books;  //深拷贝一份链表
+    books *tmp_end=tmp_head;
+    books *node=new books;
+    books *tmp=books_head->next;
+    while(tmp!=NULL){
+        node->id=tmp->id;
+        node->isbn=tmp->isbn;
+        node->name=tmp->name;
+        node->author=tmp->author;
+        node->publishing=tmp->publishing;
+        node->published=tmp->published;
+        node->price=tmp->price;
+        node->pages=tmp->pages;
+        node->description=tmp->description;
+        node->b_num=tmp->b_num;
+        node->borrow=tmp->borrow;
+        tmp=tmp->next;
+        tmp_end=node;
+        tmp_end->next=node;
+        tmp_end=tmp_end->next;
+        books *node=new books;
+    }
+    delete node;
+    tmp_end->next=NULL;
+    int i,count=0,num;
+    books *p,*q,*last;
+    p=tmp_head->next;
+    while(p->next!=NULL){
+        count++;
+        p=p->next;
+    }
+    for(i=0;i<count-1;i++){
+        p=tmp_head->next;
+        q=p->next;
+        last=tmp_head;
+        for(num=0;num<count-i-1;num++){
+            if(p->name.compare(q->name)==1){    //链表交换
+                last->next=q;
+                p->next=q->next;
+                q->next=p;
+            }
+            last=last->next;
+            p=last->next;
+            q=p->next;
+        }
+    }
+    return tmp_head;
+
 }
