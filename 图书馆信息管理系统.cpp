@@ -3,38 +3,23 @@
 
 using namespace std;
 
-operate _op;
 menu show;
-
-void IdenTity(int &n)    //感觉没那么对，到时候用不了就删
-{
-    switch (n)
-    {
-    case 1:
-        _op._admin_op();
-        break;
-    case 2:
-        _op._user_op();
-        break;
-    default:
-        cout<<"没有相应功能，请检查输入"<<'\n';
-        break;
-    }
-}
 
 int main()
 { 
     while (true)
     {
-        show.show_menu_main();
-    
-        int Choice;
-        cin>>Choice;
+        int i;
 
-        if(Choice==0)
-        return 0;
+        int book_num,ad_num,us_num;
 
-        IdenTity(Choice);
+        books* book_head=loading_books(book_num);
+        admin* admin_head=loading_admin(ad_num);
+        user* user_head=loading_users(us_num,book_head);
+
+        cout<<"欢迎使用图书馆信息管理系统！"<<'\n';
+        i=show.show_menu_main();
+
     }
     
 

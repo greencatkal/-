@@ -225,3 +225,59 @@ void books::new_publish(books *book_head) //图书最新出版排行
     }
     return ; 
 }
+
+struct author{
+    string name;
+    int num;
+    struct author* next;
+};
+
+void books::author_list(books *book_head)
+{
+    books* tmp=book_head;
+    struct author *head,*q,*p;
+    head=NULL;
+    p=head;
+    q=p;
+    while (tmp)
+    {
+        bool flag=false;
+        while (p)
+        {
+            if(p->name==tmp->author)
+            {
+                flag=true;
+                p->num+=tmp->b_num;
+                break;
+            }
+            p=p->next;
+        }
+        if(!flag)
+        {
+            p=new struct author;
+            p->name=tmp->author;
+            p->num=tmp->b_num;
+            p->next=NULL;
+            if(!head)
+            {
+                head=p;
+                q=p;
+            }
+            else
+            {
+                q->next=p;
+                q=p;
+            }
+        }
+
+        tmp=tmp->next;
+    }
+    cout<<"作者被借阅次数排行榜（前20）："<<'\n';
+    p=head->next;
+    for(int i=0;i<20;i++)   
+    {
+        cout<<i+1<<" "<<p->name<<" 被借阅次数："<<p->num<<'\n';
+        p=p->next;
+    }
+    return ; 
+}

@@ -26,7 +26,7 @@ public:
     void lookup_author(string author,books *book_head);  //作者查找图书
     void lookup_publishing(string publishing,books *book_head);  //出版社查找图书
     void book_list(books *book_head);   //图书借阅次数排行榜
-    books* author_list(books *book_head); //作者借阅次数排行榜
+    void author_list(books *book_head); //作者借阅次数排行榜
     void new_publish(books *book_head); //最新出版排行榜
     books* dictionary_list(books *book_head); //字典序排序
 
@@ -84,18 +84,14 @@ protected:
 
 class menu{
     public:
-    void show_menu_main();  //主目录
-    void show_menu_admin(); //管理员目录
-    void show_menu_user();  //使用者目录
+    int show_menu_main();  //主目录
+    int show_menu_reg(); //注册目录
+    int show_menu_admin(); //管理员目录
+    int show_menu_user();  //使用者目录
 };
 class tourist{  //游客（待开发）
 
 
-};
-class operate{  //用户操作(待删除)(什么啊笑死)
-    public:
-    void _admin_op();
-    void _user_op();
 };
 
 struct books* loading_books(int &num);
