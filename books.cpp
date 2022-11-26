@@ -166,8 +166,10 @@ void books::book_list(books *book_head) //图书借阅排行，我把返回值�
         p=tmp->next;
         q=p->next;
         last=tmp;
-        for(num=0;num<count-i-1;num++){
-            if(p->b_num>p->next->b_num){    //按借阅次数大小排序
+        for(num=0;num<count-i-1;num++)
+        {
+            if(p->b_num>p->next->b_num)
+            {    //按借阅次数大小排序
                 last->next=q;
                 p->next=q->next;
                 q->next=p;
@@ -205,8 +207,10 @@ void books::new_publish(books *book_head) //图书最新出版排行
         p=tmp->next;
         q=p->next;
         last=tmp;
-        for(num=0;num<count-i-1;num++){
-            if(p->published.compare(q->published)==1){    //按出版时间排序
+        for(num=0;num<count-i-1;num++)
+        {
+            if(p->published.compare(q->published)==1)
+            {    //按出版时间排序
                 last->next=q;
                 p->next=q->next;
                 q->next=p;
@@ -271,6 +275,33 @@ void books::author_list(books *book_head)
         }
 
         tmp=tmp->next;
+    }
+
+    p=head->next;
+    int i,count=0,num;
+    struct author *last;
+    while (p->next!=NULL)
+    {
+        count++;
+        p=p->next;
+    }
+    
+    for(i=0;i<count-1;i++){
+        p=head->next;
+        q=p->next;
+        last=head;
+        for(num=0;num<count-i-1;num++)
+        {
+            if(p->num>q->num)
+            { 
+                last->next=q;
+                p->next=q->next;
+                q->next=p;
+            }
+            last=last->next;
+            p=last->next;
+            q=p->next;
+        }
     }
     cout<<"作者被借阅次数排行榜（前20）："<<'\n';
     p=head->next;
