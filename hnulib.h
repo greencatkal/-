@@ -88,6 +88,7 @@ class menu{
     int show_menu_reg(); //注册目录
     int show_menu_admin(); //管理员目录
     int show_menu_user();  //使用者目录
+    int show_menu_tourist();  //游客目录
 };
 class tourist{  //游客（待开发）
 
