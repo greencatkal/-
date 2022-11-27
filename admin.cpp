@@ -309,3 +309,51 @@ void admin::reset_key(user *users_head){
     else
     goto in_ag;
 }
+
+admin* admin::login(admin *admins_head){
+    string amount,key;
+    int sign;
+    start:
+    system("cls");
+    sign=0;
+    cout<<"请输入账号：";
+    cin>>amount;
+    cout<<endl<<"请输入密码：";
+    cin>>key;
+    admin *tmp=admins_head->next;
+    while(tmp!=NULL){
+        if(tmp->account_num==amount){
+            sign=1;
+            break;
+        }
+        tmp=tmp->next;
+    }
+    if(sign){
+        cout<<"账号或密码错误，请重试或返回上级菜单，键入并回车："<<endl<<"0-重新输入 1-返回上级菜单：";
+        cin>>sign;
+        if(sign){
+            return NULL;
+        }
+        else{
+            goto start;
+        }
+    }
+    else{
+        if(tmp->key==key){
+            cout<<"登陆成功！"<<endl;
+            system("pause");
+            system("cls");
+            return tmp;
+        }
+        else{
+            cout<<"账号或密码错误，请重试或返回上级菜单，键入并回车："<<endl<<"0-重新输入 1-返回上级菜单：";
+            cin>>sign;
+            if(sign){
+            return NULL;
+            }
+            else{
+            goto start;
+            }
+        }
+    }
+}

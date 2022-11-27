@@ -70,7 +70,7 @@ friend void save_admins(admin *admin_head);
 friend struct admin* loading_admin(int &num);
 friend void reg_admin(admin *admin_head);
 public:
-    bool login();   //登陆
+    admin* login(admin *admin_head);   //登陆
     void add_book(books *books_head);    //增加图书
     void del_book(books *books_head);    //删除图书
     void change_book(books *books_head);    //更改图书信息
